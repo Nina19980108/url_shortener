@@ -1,1 +1,16 @@
-<h1 class="text-white">hello!</h1>
+<div class="container d-flex flex-column align-items-center m-5">
+
+  <p class="fs-2">URL Shortener</p>
+  <a href="/">
+    <i class="fas fa-link fs-2 m-3 text-dark"></i>
+  </a>
+
+  <form action="/url" method="get" class="mt-5 d-flex flex-column align-items-center">
+    <div class="form-floating" style="width: 30rem;">
+      <input type="text" class="form-control" id="floatingInput" placeholder="http://google.com" name="url">
+      <label for="floatingInput">Input URL Here</label>
+    </div>
+    <button type="submit" class="btn btn-outline-secondary mt-4" style="width: 30rem;">Shroten</button>
+  </form>
+
+</div>
