@@ -11,6 +11,12 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.get('/url', (req, res) => {
+  const url = req.query.url
+  console.log(url)
+  res.render('url', { url })
+})
+
 app.listen(port, () => {
   console.log(`App is listening on http://localhost:${port}`)
 })
