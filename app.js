@@ -1,5 +1,6 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+const randomURL = require('./randomURL')
 
 const app = express()
 const port = 3000
@@ -14,6 +15,7 @@ app.get('/', (req, res) => {
 app.get('/url', (req, res) => {
   const url = req.query.url
   console.log(url)
+  console.log(randomURL())
   res.render('url', { url })
 })
 
