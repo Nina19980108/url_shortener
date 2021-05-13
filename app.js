@@ -28,10 +28,10 @@ app.get('/', (req, res) => {
 
 app.get('/url', (req, res) => {
   url = req.query.url
-  console.log(pages.some(page => page[0] === url))
-
   randomURL = RandomURL()
-  pages.push([url, randomURL])
+  const query = new RegExp(randomURL.trim(), 'i')
+  let isSame =
+    pages.push([url, randomURL])
   console.log(pages)
   res.render('url', { randomURL })
 })
