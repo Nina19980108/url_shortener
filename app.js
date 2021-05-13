@@ -2,7 +2,7 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const RandomURL = require('./randomURL')
 const mongoose = require('mongoose')
-const urlShema = require('./models/urlShortener')
+const URL = require('./models/urlShortener')
 
 const app = express()
 const port = 3000
@@ -29,10 +29,8 @@ app.get('/', (req, res) => {
 app.get('/url', (req, res) => {
   url = req.query.url
   randomURL = RandomURL()
-  const query = new RegExp(randomURL.trim(), 'i')
-  let isSame =
-    pages.push([url, randomURL])
-  console.log(pages)
+  URL.create({ url: url, randomUrl: randomURL })
+  console.log(isSame)
   res.render('url', { randomURL })
 })
 
