@@ -30,7 +30,7 @@ app.get('/url', (req, res) => {
   url = req.query.url
   randomURL = RandomURL()
   URL.create({ url: url, randomUrl: randomURL })
-  console.log(isSame)
+
   res.render('url', { randomURL })
 })
 
