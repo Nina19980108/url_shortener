@@ -27,11 +27,16 @@ app.get('/', (req, res) => {
 })
 
 app.get('/url', async (req, res) => {
-  const times = await URL.countDocuments()
   url = req.query.url
-  randomURL = RandomURL(times)
-  URL.create({ url: url, randomUrl: randomURL })
-
+  const isUrlExist = await URL.exists({ url: url })
+  if (!isUrlExist) {
+    const times = await URL.countDocuments()
+    randomURL = RandomURL(times)
+    URL.create({ url: url, randomUrl: randomURL })
+  } else {
+    randomURL = await URL.findOne({ url: url }).lean()
+    randomURL = randomURL.randomUrl
+  }
   res.render('url', { randomURL })
 })
 
