@@ -35,8 +35,17 @@ app.get('/url', (req, res) => {
 })
 
 app.get('/url/:randomURL', (req, res) => {
-  const randomURL = req.query.randomURL
-  res.render('randomURL', { randomURL })
+  const randomURL = req.params.randomURL
+  console.log(randomURL)
+  const query = new RegExp(randomURL.trim())
+  return URL.find({
+    $or: [{ randomUrl: query }]
+  })
+    .lean()
+    .then(Url => {
+      res.redirect(Url[0].url)
+    })
+    .catch(error => console.error(error))
 })
 
 app.listen(port, () => {
