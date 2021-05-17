@@ -26,9 +26,10 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
-app.get('/url', (req, res) => {
+app.get('/url', async (req, res) => {
+  const times = await URL.countDocuments()
   url = req.query.url
-  randomURL = RandomURL()
+  randomURL = RandomURL(times)
   URL.create({ url: url, randomUrl: randomURL })
 
   res.render('url', { randomURL })
@@ -36,7 +37,6 @@ app.get('/url', (req, res) => {
 
 app.get('/url/:randomURL', (req, res) => {
   const randomURL = req.params.randomURL
-  console.log(randomURL)
   const query = new RegExp(randomURL.trim())
   return URL.find({
     $or: [{ randomUrl: query }]
