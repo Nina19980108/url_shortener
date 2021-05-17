@@ -37,7 +37,8 @@ app.get('/url', async (req, res) => {
     randomURL = await URL.findOne({ url: url }).lean()
     randomURL = randomURL.randomUrl
   }
-  res.render('url', { randomURL })
+  const hostname = 'localhost:3000'
+  res.render('url', { randomURL, hostname })
 })
 
 app.get('/url/:randomURL', (req, res) => {
