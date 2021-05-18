@@ -4,7 +4,8 @@ const URL = require('../../models/urlShortener')
 const RandomURL = require('../../randomURL')
 
 router.get('/', async (req, res) => {
-  url = req.query.url
+  let url = req.query.url
+  let randomURL = ''
   const isUrlExist = await URL.exists({ url: url })
   if (!isUrlExist) {
     const times = await URL.countDocuments()

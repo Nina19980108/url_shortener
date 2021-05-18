@@ -8,9 +8,6 @@ require('./config/mongoose')
 
 const app = express()
 const port = 3000
-let url = ''
-let randomURL = ''
-const pages = []
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: 'hbs' }))
 app.set('view engine', 'hbs')
