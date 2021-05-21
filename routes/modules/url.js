@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     randomURL = await URL.findOne({ url: url }).lean()
     randomURL = randomURL.randomUrl
   }
-  const hostname = process.env.PORT ? req.hostname : 'localhost:3000'
+  const hostname = req.hostname
   res.render('url', { randomURL, hostname })
 })
 
